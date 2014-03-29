@@ -1,0 +1,100 @@
+{% extends "admin/change_list.html" %}
+{% load i18n admin_urls admin_static admin_list %}
+{% block content %}
+  {{ block.super }}
+  <div class="results" id="admin-div">
+  <h2>Statistics</h2>
+  <table width = "100%">
+	  <tr>
+		  <th>Total Transaction Amount</th>
+		  <th>Total Transaction Count</th>
+		  <th>&nbsp;</th>
+	  </tr>
+	  <tr>
+		  <td>{{TransactionAmount}}</td>
+		  <td>{{TransactionCount}}</td>
+		  <td>&nbsp;</td>
+
+	  </tr>
+	  <tr>
+		  <th>Total Customer Paid Amount</th>
+		  <th>Total Customer Count</th>
+		  <th>Total Customer Paid Count</th>
+	  </tr>
+	  <tr>
+		  <td>{{CustomerPaidAmount}}</td>
+		  <td>{{CustomerCount}}</td>
+		  <td>{{CustomerPaidCount}}</td>
+	  </tr>
+
+	  <tr>
+		  <th>Total Customer Paid In Cash</th>
+		  <th>Total Customer Paid In Check</th>
+		  <th>Total Customer Paid In CreditCard</th>
+	  </tr>
+	  <tr>
+		  <td>{{CustomerCashPaidAmount}}</td>
+		  <td>{{CustomerCheckPaidAmount}}</td>
+		  <td>{{CustomerCreditCardPaidAmount}}</td>
+	  </tr>
+
+	  <tr>
+		  <th>Total Customer Paid In Other</th>
+		  <th>-</th>
+		  <th>-</th>
+	  </tr>
+	  <tr>
+		  <td>{{CustomerOtherPaidAmount}}</td>
+		  <td>-</td>
+		  <td>-</td>
+	  </tr>
+  </table>
+  </div>
+
+  <button class="hide" onclick="javascript:window.print(); ">Print</button>
+  <button class="hide" onclick="javascript:showstatistics(django.jQuery);window.print(); ">Print Statistics</button>
+{% endblock %}
+{% block extrahead %}
+
+  {{ block.super }}
+  <script type="text/javascript">
+	function hide($){
+		$("#admin-div").addClass("hide");
+		$(".object-tools").addClass("hide");
+		$("#toolbar").addClass("hide");
+		$(".actions").addClass("hide");
+		$("#user-tools").addClass("hide");
+		$("#changelist-filter").addClass("hide");
+	}
+	var $ = django.jQuery;
+	$( document ).ready(function() {
+			hide($);
+	});
+	function showstatistics($){
+		$("#content-main").addClass("hide");
+		$("#admin-div").removeClass("hide");
+	}
+
+  </script>
+
+{% endblock %}
+{% block extrastyle %}
+  {{ block.super }}
+<style>
+	@media print{
+	#header {
+		display: none;
+	}
+	#toolbar {
+		display: none;
+	}
+	.hide{
+		display: none;
+	}
+	.show{
+		display: inline;
+	}
+	}
+</style>
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "admin/change_form.html" %}
+{% block after_field_sets %}
+{% if transaction_sum %}
+{% load humanize %}
+
+<div class="inline-group" >
+<div class="tabular inline-related ">
+<h2> Purchase Records: </h2>
+<table width="100%" >
+	<tr>
+		<th width="20%">Bid Number</th> 
+		<th width="60%">Item </th> 
+		<th width="20%" >Price</th> 
+	</tr>
+	{% for t in transactions %}
+	<tr>
+		<td class="field-xx">{{ t.item.bid_number }} </td>
+		<td>{{ t.item.name }} </td>
+		<td>${{ t.price|floatformat:2|intcomma }} </td>
+	</tr>
+	{% endfor %}
+	<tr> 
+		<td colspan="2"><strong>Total<strong></td>
+		<td><strong> ${{transaction_sum|floatformat:2|intcomma }} <input type="hidden" id="total_due" value="{{transaction_sum}}" /><strong></td>
+	</tr>
+</table>
+</div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block submit_buttons_bottom %}
+
+{% load i18n admin_urls %}
+
+<div class="submit-row">
+	<input type="submit" value="{% trans 'Save' %}" class="default" name="_save" />
+	<input id="checkoutButton" type="submit" value="{% trans 'Checkout' %}" name="_checkout" />
+	<input id="printButton" type="Button" value="{% trans 'Print' %}" name="_print" />
+</div>
+
+{% endblock %}
+
+{% block extrahead %}
+{{block.super}}
+	
+ <script type="text/javascript">
+	 var $ = django.jQuery;
+	 $( document ).ready(function() {
+			 $("#checkoutButton").click(function(e){
+				 if(!$("#id_payment_method").val()) {
+				 	alert("Please select a payment method");
+					e.preventDefault();
+					return;
+				 }	
+				 if(!$("#id_paid_amount").val()){
+				 	//alert("Set paid amount to total due " + $("#total_due").val());
+					$("#id_paid_amount").val($("#total_due").val());
+				 }
+
+
+				 $("#id_paid").prop("checked","checked");
+				 $("#customer_form").submit();
+				 }); 
+			 $("#printButton").click(function(){
+					window.open("/auction/bill?id={{original.id}}", "Checkout" , "height=1024,width=768");
+			 });
+
+
+			{%if request.GET.show_print %}
+				$("#printButton").show();
+			{%else %}
+
+				$("#printButton").hide();
+			{%endif%}
+
+			 });
+</script>
+{% endblock %}

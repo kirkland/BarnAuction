@@ -1,0 +1,85 @@
+{% load humanize %}
+<html>
+	<head>
+		<title>Acton Barn Cooperative 2014 Spring Auction</title>
+		<style>
+			@media print {
+				button { display: none}
+			}
+			@media screen {
+				button { font-size: 36px;
+					margin: 5px 10px 5px 10px;
+				}
+			}
+			@media screen, print{
+				body { background:white; color:black; margin:36px }
+			   	p {font-size:20px;}
+				table, th, td
+				{
+					border: 1px solid green;
+				}
+				table
+				{
+					border-collapse:collapse;
+				}
+				th, td
+				{
+					border:1px solid gray;
+					padding:3px 7px 2px 7px;
+				}
+				tr.row1 td 
+				{
+					color:#000000;
+					background-color:#EAF2D3;
+				}
+				img {
+
+					float:right;
+				}
+				h1 {
+
+					font-size: 24px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<img width="80px" height="80px" src="/static/auction/logo.jpg" />
+		<h1>Acton Barn Cooperative Nursery School</h1>
+		<h2>2014 Spring Auction</h2>
+	<table width ="100%" />
+		<tr>
+			<th>Paddle Number</th>
+		</tr>
+		<tr>
+			<td>{{customer.paddle_number }} </td>
+		</tr>
+	</table>
+
+	<h3>Purchase Records: </h2>
+	<table width="100%" >
+	<tr>
+		<th width="20%">Bid Number</th> 
+		<th width="60%">Item </th> 
+		<th width="20%" >Price</th> 
+	</tr>
+	{% for t in transactions %}
+	<tr class="{% cycle 'row1' 'row2' %}">
+		<td class="field-xx">{{ t.item.bid_number }} </td>
+		<td>{{ t.item.name }} </td>
+		<td>${{ t.price|floatformat:2|intcomma }} </td>
+	</tr>
+	{% endfor %}
+	<tr> 
+		<td colspan="2"><strong>Total</strong></td>
+		<td><strong>${{transaction_sum|floatformat:2|intcomma }}</strong> </td>
+	</tr>
+
+	</table>
+	<strong>Note: It may take a while for the operator to input all bid records, the above result may be incomplete or inaccurate.</strong>
+	<p>Thanks for your support!</p>
+	<button  onclick="javascript:history.go(-1)" > Back </button>
+	</body>
+
+</html>
+

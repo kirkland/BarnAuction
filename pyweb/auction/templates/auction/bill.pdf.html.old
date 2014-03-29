@@ -1,0 +1,66 @@
+{% load humanize %}
+<html>
+	<body>
+		<img width="80" height="80" src="logo.jpg" />
+		<h1>Acton Barn Cooperative Nursery School</h1>
+		<h2>2014 Spring Auction</h2>
+	<table width ="240" border="1"/>
+		<tbody>
+		<tr>
+			<th width="120">Name</th>
+			<th width="120">Paddle Number</th>
+		</tr>
+		<tr>
+			<td>{{customer.name}} </td>
+			<td>{{customer.paddle_number }} </td>
+		</tr>
+
+		<tr>
+			<th>Payment Method</th>
+			<th>Date</th>
+		</tr>
+		<tr>
+			<td>{{customer.payment_method}} </td>
+			<td>  {% now "F jS, Y" %}</td>
+		</tr>
+		</tbody>
+	</table>
+
+	<h3>Purchase Records: </h2>
+	<table width="240" >
+		<tbody>
+	<tr>
+		<th width="48">Bid Number</th> 
+		<th width="144">Item </th> 
+		<th width="48" >Price</th> 
+	</tr>
+	{% for t in transactions %}
+	<tr class="{% cycle 'row1' 'row2' %}">
+		<td class="field-xx">{{ t.item.bid_number }} </td>
+		<td>{{ t.item.name }} </td>
+		<td>${{ t.price|floatformat:2|intcomma }} </td>
+	</tr>
+	{% endfor %}
+	<tr> 
+		<td colspan="2"><strong>Total</strong></td>
+		<td><strong>${{transaction_sum|floatformat:2|intcomma }}</strong> </td>
+	</tr>
+
+	<tr> 
+		<td colspan="2"><strong>Paid</strong></td>
+		<td><strong>${{customer.paid_amount|floatformat:2|intcomma }}</strong> </td>
+	</tr>
+	{% if balance >= 0  %}
+	<tr> 
+		<td colspan="2"><strong>Balance</strong></td>
+		<td><strong>${{ balance |floatformat:2|intcomma }}</strong> </td>
+	</tr>
+	{% endif %}
+		</tbody>
+	</table>
+	<p>Thanks for your support!</p>
+	<p><small>We are a 501(c)3 organization. Our non-profit tax identification number is E 042 526 055.</small></p>
+	</body>
+
+</html>
+

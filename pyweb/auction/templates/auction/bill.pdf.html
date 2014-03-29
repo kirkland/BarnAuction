@@ -1,0 +1,40 @@
+{% load humanize %}
+{% autoescape off %}
+<html>
+	<body>
+		<img width="80" height="80" src="logo.jpg" />
+		<h1>Acton Barn Cooperative Nursery School</h1>
+		<h2>2014 Spring Auction</h2>
+
+		<h4>Paddle#:     {{customer.paddle_number}}                             Name:     {{customer.name}}</h4>
+
+	<h3>Purchase Records: </h3>
+
+	<ul>
+
+	{% for t in transactions %}
+	<li><font face="Courier"> {{t}} </font></li>
+	{% endfor %}
+	</ul> 
+	<p />
+	<h3>Payment </h3>
+	<ul>
+		<li><font face="Courier"> {{sum}}</font></li>
+	{% if balance_num < 0  %}
+		<li><font face="Courier"> {{extra}}</font></li>
+	{% endif %}
+		<li><font face="Courier"> {{paid}}</font></li>
+	{% if balance_num > 0  %}
+		<li><font face="Courier"> {{balance}}</font></li>
+	{% endif %}
+	
+	</ul>
+	<p />
+	<p><font>Paid by {{customer.payment_method}} on {% now "F jS, Y" %}, Thanks for your support!</font></p>
+	<p />
+	<p><font size="11">We are a 501(c)3 organization. Our non-profit tax identification number is E 042 526 055.</font></p>
+	</body>
+
+</html>
+
+    {% endautoescape %}

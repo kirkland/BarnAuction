@@ -1,0 +1,111 @@
+SA-01	SILIENT	Baby, You Can Drive My Car
+SA-02	SILIENT	Living Barefoot
+SA-03	SILIENT	Hand-Knit Washable Wool Socks
+SA-04	SILIENT	If It Walks Like a Duck…
+SA-05	SILIENT	Take Me Out To The Ball Game
+SA-06	SILIENT	Giddy Up!
+SA-07	SILIENT	Look Closer, Dig Deeper
+SA-08	SILIENT	Children's Book and Signed Poster
+SA-09	SILIENT	How Does Your Garden Grow?
+SA-10	SILIENT	Work of Art
+SA-11	SILIENT	Take a Walk on the Wild Side!
+SA-12	SILIENT	Calling All Boston Sports Fans
+SA-13	SILIENT	Off The Reservation
+SA-14	SILIENT	Ahoy There!
+SA-15	SILIENT	One Year Household Membership
+SA-16	SILIENT	Business Gift Set
+SA-17	SILIENT	Having a Party? Go Ape!
+SA-18	SILIENT	Birthday Balloon Wreath
+SA-19	SILIENT	Mmmm
+SA-20	SILIENT	Afternoon Tea Set
+SA-21	SILIENT	Handmade (Knit) Girlsl Cardigan Sweater
+SA-22	SILIENT	Dishing It Out
+SA-23	SILIENT	Your Budding Artist and Sculptor
+SA-24	SILIENT	Glam It Up Jewelry
+SA-25	SILIENT	Toys!
+SA-26	SILIENT	Calling All Clumsy!
+SA-27	SILIENT	Get Into Science and Nature
+SA-28	SILIENT	York's Wild Kingdom
+SA-29	SILIENT	Healthy Healing
+SA-30	SILIENT	A Man May Die, Nations May Rise and Fall, But An Idea Lives On
+SA-31	SILIENT	Art Comes to Life
+SA-32	SILIENT	Bird's Eye View
+SA-33	SILIENT	Our New England Past
+SA-34	SILIENT	Flight of Fancy
+SA-35	SILIENT	Let's Play Dress Up
+SA-36	SILIENT	Baby Quilt
+SA-37	SILIENT	Discovery Museums
+SA-38	SILIENT	Dining Local
+SA-39	SILIENT	I Can, Canoe?
+SA-40	SILIENT	Make a Quick Get-Away
+SA-41	SILIENT	Caroline Doll
+SA-42	SILIENT	A Concerted Effort
+SA-43	SILIENT	Six Month Bread Certificate
+SA-44	SILIENT	Peak Performance
+SA-45	SILIENT	He Shoots, He Scores!
+SA-46	SILIENT	How Sweet It Is
+SA-47	SILIENT	Rub You the Wright Way
+SA-48	SILIENT	Reach for the Stars
+SA-49	SILIENT	Let Them Eat Cake
+SA-50	SILIENT	Natural Beauty
+SA-51	SILIENT	It's Music To My Ears
+SA-52	SILIENT	Kate Spade "Stevie Baby Bag
+SA-53	SILIENT	Baby, It's Cold Outside
+SA-54	SILIENT	Fish Gotta Swim
+SA-55	SILIENT	Well, Naturally
+SA-56	SILIENT	Champagne
+SA-57	SILIENT	Something Different
+SA-58	SILIENT	See a Show!
+SA-59	SILIENT	Drumlin Farm Wildlife Sanctuary
+SA-60	SILIENT	Strike a Pose
+SA-61	SILIENT	Animal Sightings
+SA-62	SILIENT	You Drama Queen
+SA-63	SILIENT	Hours of Organization
+SA-64	SILIENT	You Deserve a Beautiful Home
+SA-65	SILIENT	Come Play, Come Learn!
+SA-66	SILIENT	Sew Good
+SA-67	SILIENT	Feeling Fancy
+SA-68	SILIENT	Sign Me up
+SA-69	SILIENT	Doll It Up
+SA-70	SILIENT	Raspberry or Strawberry?
+SA-71	SILIENT	Babysitting
+SA-72	SILIENT	Lookin' Good
+SA-73	SILIENT	Mobiles for Adults or Kids!
+SA-74	SILIENT	Simply Elegant
+SA-75	SILIENT	Beauty Time!
+SA-76	SILIENT	Pamper Yourself and Some Friends!
+LA-01	LIVE	King of the Hill
+LA-02	LIVE	Estate Planning Session(s)
+LA-03a	LIVE	Nancy's Magical Capes
+LA-03b	LIVE	Nancy's Magical Capes
+LA-04	LIVE	Host a Pizza Party!
+LA-05	LIVE	Drop and RUN
+LA-06	LIVE	At-Home Oil Changes for a Year
+LA-07	LIVE	Party Animals
+LA-08	LIVE	On the House!
+LA-09	LIVE	Two Cakes/Pies
+LA-10	LIVE	You Clean Up Good
+LA-11	LIVE	Alley-Oop
+LA-12	LIVE	Let Them Drink Wine
+LA-13	LIVE	Magical Mystery Tour
+LA-14	LIVE	Magical Fairy House
+LA-15	LIVE	Children's Art Project
+LA-16	LIVE	Disney World - Need we say more??!!
+LA-17	LIVE	Three "Suprise" Date Night Packages
+O-RAFFLE-1	OTHER	Raffles $5 each - (1)
+O-RAFFLE-2	OTHER	Raffles $5 each - (2)
+O-RAFFLE-3	OTHER	Raffles $5 each - (3)
+O-RAFFLE-4	OTHER	Raffles $5 each - (4)
+O-BARNIES-1	OTHER	Barnies $10 each - (1)
+O-BARNIES-2	OTHER	Barnies $10 each - (2)
+O-Pizza-1	OTHER	Pizza party $40 each - (1)
+O-Pizza-2	OTHER	Pizza party $40 each - (2)
+O-Pizza-3	OTHER	Pizza party $40 each - (3)
+O-Donation-1	OTHER	Lighting project donation - (1)
+O-Donation-2	OTHER	Lighting project donation - (2)
+O-MASSAGE-1	OTHER	Massage $10 each - (1)
+O-MASSAGE-2	OTHER	Massage $10 each - (2)
+O-T-Shirts-1	OTHER	T-Shirts $10 each
+O-Magnets-1	OTHER	Magnets $5 each
+O-Bags	OTHER	Bag
+O-Shopping-Guess	OTHER	Shopping Guess $1 per entry
