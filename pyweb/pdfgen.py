@@ -34,14 +34,15 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
 import mimetypes
-me = 'Acton Barn<li.changgeng@gmail.com>';
+##me = 'Acton Barn<li.changgeng@gmail.com>';
+me = 'Acton Barn<brad.wasson@gmail.com>';
 
 def send_email(me, to, file):
     msg = MIMEMultipart()
-    msg['Subject'] = 'Your receipt for Spring 2014 Auction'
+    msg['Subject'] = 'Your receipt for Spring 2015 Auction'
     msg['From'] = me
     msg['To'] = to
-    msg.preamble = 'Your receipt for Sprint 2014 Auction'
+    msg.preamble = 'Your receipt for Sprint 2015 Auction'
     fp = open(file, 'rb')
     pdf = MIMEBase('application', 'pdf')
     pdf.add_header('Content-Disposition', 'attachment', filename=file)
@@ -52,10 +53,11 @@ def send_email(me, to, file):
     #print msg.as_string()
     smtp = smtplib.SMTP('smtp.gmail.com:587')
     smtp.starttls()
-    smtp.login('li.changgeng@gmail.com','####')
+    ##smtp.login('li.changgeng@gmail.com','####')
+    smtp.login('brad.wasson@gmail.com','#####')
     smtp.sendmail(me, to, msg.as_string())
     smtp.quit()
-    print "Send email to ", to, " Successfully"
+    print "Sent email to ", to, " Successfully"
 
 import time
 from fpdf import FPDF, HTMLMixin

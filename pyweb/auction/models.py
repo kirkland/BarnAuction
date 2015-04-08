@@ -9,12 +9,12 @@ class Customer(models.Model):
 #    access_code = models.IntegerField()
     name = models.CharField(max_length=255)
     email = models.EmailField(null=True, blank=True)
-    paid = models.BooleanField(help_text="This will be checked automatically during checkout")
+    paid = models.BooleanField(help_text="This will be checked automatically during checkout", default=False)
     paid_amount = models.DecimalField(max_digits=7,decimal_places=2, null = True, blank = True, help_text="Leave this field blank if paid in full ")
     modified_time = models.DateTimeField(auto_now = True)
     PAYMENT_METHODS = ( ('CASH', 'Cash'), ('CHECK', 'Check'), ('CREDITCARD', 'CreditCard'), ('OTHER', 'Other'),)
     payment_method = models.CharField(max_length=10, choices=PAYMENT_METHODS, null = True, blank= True, help_text = "Select a payment method during checkout")
-    email_receipt = models.BooleanField()
+    email_receipt = models.BooleanField(default=False)
     def __unicode__(self):
         return "%s %s" % (self.paddle_number, self.name)
     class Meta:
