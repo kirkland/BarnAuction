@@ -53,7 +53,7 @@ class CustomerAdmin(admin.ModelAdmin):
         preserved_filters = self.get_preserved_filters(request)
         msg_dict = {'name': force_text(opts.verbose_name), 'obj': force_text(obj)}
         if "_checkout" in request.POST:
-            msg = _('%(name)s "%(obj)s" was checkout successfully. You may print receipt below.') % msg_dict
+            msg = _('%(name)s "%(obj)s" was checked out successfully. You may print the receipt below.') % msg_dict
             self.message_user(request, msg, messages.SUCCESS)
             redirect_url = request.path + "?show_print=True"
             redirect_url = add_preserved_filters({'preserved_filters': preserved_filters, 'opts': opts}, redirect_url)

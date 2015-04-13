@@ -39,3 +39,7 @@ def bill(request):
         return render(request, 'auction/bill.html', {'customer':c, 'transactions': transactions, 'transaction_sum': transaction_sum, 'balance': transaction_sum - c.paid_amount})
     else:
         return HttpResponse( "id not found");
+
+
+def winners(request):
+    return render(request, 'auction/winners.html', {'transactions': Transaction.objects.filter(item__type='SILIENT').order_by('customer__paddle_number') } )

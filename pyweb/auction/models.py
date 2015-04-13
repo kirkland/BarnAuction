@@ -29,7 +29,7 @@ class Item(models.Model):
     created_time = models.DateTimeField(auto_now_add = True)
     modified_time = models.DateTimeField(auto_now = True)
     def __unicode__(self):
-        return "%s(%s)" % (self.name, self.bid_number)
+        return "%s (%s)" % (self.name, self.bid_number)
     class Meta:
         ordering = ['bid_number']
    
