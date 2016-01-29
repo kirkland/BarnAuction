@@ -30,7 +30,7 @@
 	
 	</ul>
 	<p />
-	<p><font>Paid by {{customer.payment_method}} on {% now "F jS, Y" %}, Thanks for your support!</font></p>
+	<p><font>Paid by {{customer.payment_method}} on {{ when_datetime|date:"F jS, Y" }}, Thanks for your support!</font></p>
 	<p />
 	<p><font size="11">We are a 501(c)3 organization. Our non-profit tax identification number is E 042 526 055.</font></p>
 	</body>

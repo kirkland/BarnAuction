@@ -27,7 +27,15 @@ def get_context(c):
     balance = transaction_sum - c.paid_amount
     formatted_balance = '{:.<47}{:.>10}'.format('Balance','${:.2f}'.format(balance))
     formatted_extra = '{:.<47}{:.>10}'.format('Extra Donation','${:.2f}'.format(-1 * balance))
-    return Context( {'customer':c, 'transactions': formatted_transaction, 'sum': formatted_sum, 'balance': formatted_balance, 'paid': formatted_paid, 'balance_num': balance, 'extra': formatted_extra})
+    return Context( {'customer' : c, 
+                     'transactions' : formatted_transaction, 
+                     'raw_sum' : transaction_sum,
+                     'sum' : formatted_sum, 
+                     'balance' : formatted_balance, 
+                     'paid' : formatted_paid, 
+                     'balance_num' : balance, 
+                     'extra': formatted_extra,
+                     'when_datetime' : c.modified_time })
 
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -50,11 +58,12 @@ def send_email(me, to, file):
     encoders.encode_base64(pdf)
     fp.close()
     msg.attach(pdf)
-    #print msg.as_string()
+#    print msg.as_string()
+
     smtp = smtplib.SMTP('smtp.gmail.com:587')
     smtp.starttls()
     ##smtp.login('li.changgeng@gmail.com','####')
-    smtp.login('brad.wasson@gmail.com','#####')
+    smtp.login('brad.wasson@gmail.com','5rd4es3w')
     smtp.sendmail(me, to, msg.as_string())
     smtp.quit()
     print "Sent email to ", to, " Successfully"
@@ -64,15 +73,36 @@ from fpdf import FPDF, HTMLMixin
 
 class MyFPDF(FPDF, HTMLMixin):
     pass
+
+skip_list = [25, 32, 55]
+#yes_list = [8, 26, 61, 63]
+yes_list = [2]
+
 for c in Customer.objects.all():
     if not c.email:
         continue
-    html = template.render(get_context(c))    
+    if not c.paid:
+        continue
+    if c.paid_amount is None:
+        continue
+    if c.paddle_number in skip_list:
+        continue
+
+    if c.paddle_number not in yes_list:
+        continue
+
+    context = get_context(c)
+
+#    if float(c.paid_amount) != float(context['raw_sum']):
+#        print "##############"
+
+    print "Sending email to {} ({}) - paid amount ${} - transaction sum ${}".format(c.name, c.paddle_number, c.paid_amount, context['raw_sum'])
+    html = template.render(context)
     #print html
     pdf=MyFPDF()
     pdf.add_page()
     pdf.write_html(html)
     pdf.output('receipt-%d.pdf' % (c.paddle_number),'F')
-    print "Sending email to %s(%d)" % (c.name, c.paddle_number)
+
     send_email(me, c.email, 'receipt-%d.pdf' % (c.paddle_number))
     time.sleep(40)
