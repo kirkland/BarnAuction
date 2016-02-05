@@ -10,7 +10,7 @@ import time
 
 import xlsxwriter
 
-filename = 'barn_auction_transactions_2015.xlsx'
+filename = 'barn_auction_transactions_2016.xlsx'
 workbook = xlsxwriter.Workbook(filename)
 worksheet = workbook.add_worksheet()
 

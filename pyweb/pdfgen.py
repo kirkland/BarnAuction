@@ -47,10 +47,10 @@ me = 'Acton Barn<brad.wasson@gmail.com>';
 
 def send_email(me, to, file):
     msg = MIMEMultipart()
-    msg['Subject'] = 'Your receipt for Spring 2015 Auction'
+    msg['Subject'] = 'Your receipt for Spring 2016 Auction'
     msg['From'] = me
     msg['To'] = to
-    msg.preamble = 'Your receipt for Sprint 2015 Auction'
+    msg.preamble = 'Your receipt for Sprint 2016 Auction'
     fp = open(file, 'rb')
     pdf = MIMEBase('application', 'pdf')
     pdf.add_header('Content-Disposition', 'attachment', filename=file)
@@ -62,8 +62,7 @@ def send_email(me, to, file):
 
     smtp = smtplib.SMTP('smtp.gmail.com:587')
     smtp.starttls()
-    ##smtp.login('li.changgeng@gmail.com','####')
-    smtp.login('brad.wasson@gmail.com','5rd4es3w')
+    smtp.login('rob.m.kaufman@gmail.com','XXX-put-password-here')
     smtp.sendmail(me, to, msg.as_string())
     smtp.quit()
     print "Sent email to ", to, " Successfully"
@@ -74,22 +73,29 @@ from fpdf import FPDF, HTMLMixin
 class MyFPDF(FPDF, HTMLMixin):
     pass
 
-skip_list = [25, 32, 55]
+skip_list = []
 #yes_list = [8, 26, 61, 63]
-yes_list = [2]
+yes_list = []
 
 for c in Customer.objects.all():
+    print "start of loop"
+    print c
     if not c.email:
+        print "no email"
         continue
     if not c.paid:
+        print "not paid"
         continue
     if c.paid_amount is None:
+        print "paid amount is none"
         continue
     if c.paddle_number in skip_list:
         continue
 
-    if c.paddle_number not in yes_list:
-        continue
+#    if c.paddle_number not in yes_list:
+#        continue
+
+    print "we made it yogi"
 
     context = get_context(c)
 
